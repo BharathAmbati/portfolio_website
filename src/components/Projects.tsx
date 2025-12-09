@@ -1,62 +1,77 @@
 import { motion } from "motion/react";
 import { Component as MorphingCardStack } from "@/components/ui/morphing-card-stack";
-import { Database, BarChart3, Globe, Layout } from "lucide-react";
+import { Database, BarChart3, Gamepad2, Activity } from "lucide-react";
 
 const projects = [
     {
         id: "1",
-        title: "Data Warehousing Project",
+        title: "RunX",
         description:
-            "Designed a Data Warehouse with Bronze-Silver-Gold layered architecture and Star Schema modeling. Built robust ETL pipelines in SQL Server and PySpark to process CRM & ERP datasets.",
-        tags: ["SQL Server", "PySpark", "SSMS", "T-SQL"],
-        link: "#",
-        icon: <Database className="h-6 w-6 text-purple-400" />,
+            "A modern web application built with Next.js and deployed on Vercel. Features a clean, responsive UI with optimized performance.",
+        tags: ["Next.js", "React", "TypeScript", "Vercel"],
+        link: "https://github.com/BharathAmbati/RunX",
+        icon: <Activity className="h-6 w-6 text-cyan-400" />,
     },
     {
         id: "2",
-        title: "Data Analytics Project",
+        title: "Data Warehouse Project",
         description:
-            "Performed end-to-end data analysis on sales and customer datasets. Developed interactive Tableau dashboards to visualize KPIs such as revenue growth and customer churn.",
-        tags: ["Tableau", "Python", "SQL", "Excel"],
-        link: "#",
-        icon: <BarChart3 className="h-6 w-6 text-blue-400" />,
+            "Built a Modern Data Warehouse using Medallion Architecture (Bronze, Silver, Gold layers). Designed ETL pipelines, created fact and dimension tables with Star Schema modeling, and developed SQL-based reports for analytics.",
+        tags: ["SQL Server", "ETL", "Star Schema", "Data Modeling"],
+        link: "https://github.com/BharathAmbati/data-warehouse-project",
+        icon: <Database className="h-6 w-6 text-purple-400" />,
     },
     {
         id: "3",
-        title: "E-Commerce Analytics",
+        title: "Data Analytics Project",
         description:
-            "Real-time dashboard for monitoring sales performance, inventory levels, and customer behavior patterns using React and D3.js.",
-        tags: ["React", "D3.js", "Node.js"],
-        link: "#",
-        icon: <Globe className="h-6 w-6 text-green-400" />,
+            "End-to-end data analysis on sales and customer datasets. Performed data cleansing, exploratory analysis, and created interactive dashboards to visualize KPIs and business metrics.",
+        tags: ["Python", "SQL", "Data Analysis", "Visualization"],
+        link: "https://github.com/BharathAmbati/data-analytics-project",
+        icon: <BarChart3 className="h-6 w-6 text-blue-400" />,
     },
     {
         id: "4",
-        title: "CRM System Migration",
+        title: "Tic Tac Toe",
         description:
-            "Led the migration of legacy CRM data to a modern cloud-based solution, ensuring data integrity and minimal downtime.",
-        tags: ["Azure", "SQL", "Python"],
-        link: "#",
-        icon: <Layout className="h-6 w-6 text-orange-400" />,
+            "Interactive Tic Tac Toe game with a clean UI. Built to demonstrate front-end development skills and game logic implementation.",
+        tags: ["JavaScript", "HTML", "CSS", "Game Dev"],
+        link: "https://github.com/BharathAmbati/tic-tac-toe",
+        icon: <Gamepad2 className="h-6 w-6 text-pink-400" />,
     },
 ];
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-24 px-6">
-            <div className="max-w-6xl mx-auto">
-                <motion.h2
+        <section id="projects" className="py-24 px-6 relative">
+            {/* Background gradient */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/[0.02] to-transparent pointer-events-none" />
+            
+            <div className="max-w-6xl mx-auto relative z-10">
+                <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-3xl font-bold text-white mb-12"
+                    className="text-center mb-12"
                 >
-                    Selected Work
-                </motion.h2>
+                    <h2 className="text-3xl font-bold text-white mb-4">
+                        Selected <span className="gradient-text">Work</span>
+                    </h2>
+                    <p className="text-zinc-400 max-w-xl mx-auto">
+                        A collection of projects showcasing my expertise in data engineering, 
+                        analytics, and web development.
+                    </p>
+                </motion.div>
 
-                <div className="flex justify-center">
+                <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.2 }}
+                    className="flex justify-center"
+                >
                     <MorphingCardStack cards={projects} />
-                </div>
+                </motion.div>
             </div>
         </section>
     );
